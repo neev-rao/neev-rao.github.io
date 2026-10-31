@@ -47,7 +47,6 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 initSectionScoreboard({ reducedMotion });
 initBevo({ reducedMotion });
-const motionButton = document.querySelector('.motion-toggle');
 const ball = document.querySelector('#pong-ball');
 const shadow = document.querySelector('#ball-shadow');
 const left = document.querySelector('#paddle-left');
@@ -56,7 +55,6 @@ const leftSwing = document.querySelector('#paddle-left-swing');
 const rightSwing = document.querySelector('#paddle-right-swing');
 const ring = document.querySelector('#hit-ring');
 const trails = [document.querySelector('#ball-trail-1'), document.querySelector('#ball-trail-2')];
-let paused = false;
 let queued = false;
 let lastDistance = window.scrollY;
 
@@ -83,24 +81,17 @@ function drawRally(distance) {
   lastDistance = distance;
 }
 function requestDraw() {
-  if (queued || paused || reducedMotion.matches) return;
+  if (queued || reducedMotion.matches) return;
   queued = true;
   requestAnimationFrame(() => {
     queued = false;
-    if (!paused && !reducedMotion.matches) drawRally(window.scrollY);
+    if (!reducedMotion.matches) drawRally(window.scrollY);
   });
 }
 function syncMotionPreference() {
-  motionButton.hidden = reducedMotion.matches;
   if (reducedMotion.matches) drawRally(0);
-  else if (!paused) drawRally(window.scrollY);
+  else drawRally(window.scrollY);
 }
-motionButton.addEventListener('click', () => {
-  paused = !paused;
-  motionButton.setAttribute('aria-pressed', String(paused));
-  motionButton.textContent = paused ? 'Resume rally' : 'Pause rally';
-  if (!paused) requestDraw();
-});
 reducedMotion.addEventListener('change', syncMotionPreference);
 window.addEventListener('scroll', requestDraw, { passive: true });
 window.addEventListener('resize', requestDraw, { passive: true });

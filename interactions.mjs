@@ -26,7 +26,6 @@ export function initSectionScoreboard({ reducedMotion }) {
   const label = board.querySelector('.scoreboard-label');
   const oldFlap = board.querySelector('.scoreboard-old');
   const newFlap = board.querySelector('.scoreboard-new');
-  const index = board.querySelector('.scoreboard-index');
   const sections = SECTIONS.map(section => ({ ...section, element: document.getElementById(section.id) }));
   const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
   let current = 'home';
@@ -48,7 +47,6 @@ export function initSectionScoreboard({ reducedMotion }) {
     current = id;
     board.dataset.section = id;
     label.textContent = section.label;
-    index.textContent = `${String(sections.indexOf(section) + 1).padStart(2, '0')} / 06`;
     navLinks.forEach(link => {
       if (link.hash === `#${id}`) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
