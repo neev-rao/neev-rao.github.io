@@ -1,4 +1,5 @@
 import { rallyAt } from './pong.mjs';
+import { initSectionScoreboard, initBevo } from './interactions.mjs';
 
 const root = document.documentElement;
 const themeButton = document.querySelector('.theme-toggle');
@@ -41,22 +42,11 @@ document.addEventListener('click', event => {
   if (!event.target.closest('.site-header')) closeMenu();
 });
 
-if ('IntersectionObserver' in window) {
-  const links = Array.from(nav.querySelectorAll('a'));
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      links.forEach(link => {
-        if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
-      });
-    });
-  }, { rootMargin: '-15% 0px -65% 0px' });
-  links.forEach(link => observer.observe(document.querySelector(link.hash)));
-}
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+initSectionScoreboard({ reducedMotion });
+initBevo({ reducedMotion });
 const motionButton = document.querySelector('.motion-toggle');
 const ball = document.querySelector('#pong-ball');
 const shadow = document.querySelector('#ball-shadow');
