@@ -89,38 +89,3 @@ function getRect(element) {
   const { top, bottom } = element.getBoundingClientRect();
   return { top, bottom };
 }
-
-export function initBevo({ reducedMotion }) {
-  const trigger = document.querySelector('.ut-trigger');
-  const popup = document.querySelector('#bevo-popup');
-  if (!trigger || !popup) return;
-  let dismissTimer;
-  function hide() {
-    clearTimeout(dismissTimer);
-    popup.hidden = true;
-    popup.classList.remove('is-celebrating');
-    trigger.setAttribute('aria-expanded', 'false');
-  }
-  function show() {
-    clearTimeout(dismissTimer);
-    popup.classList.remove('is-celebrating');
-    popup.hidden = false;
-    const rect = trigger.getBoundingClientRect();
-    const width = popup.offsetWidth;
-    const height = popup.offsetHeight;
-    popup.style.left = `${Math.max(12, Math.min(window.innerWidth - width - 12, rect.left + rect.width / 2 - width / 2))}px`;
-    const above = rect.top - height - 14;
-    popup.style.top = `${Math.max(12, above >= 85 ? above : Math.min(window.innerHeight - height - 12, rect.bottom + 14))}px`;
-    // Restart a finite celebration on each intentional visit to the UT text.
-    void popup.offsetWidth;
-    if (!reducedMotion.matches) popup.classList.add('is-celebrating');
-    trigger.setAttribute('aria-expanded', 'true');
-    dismissTimer = setTimeout(hide, 3800);
-  }
-  trigger.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') show(); });
-  trigger.addEventListener('focus', show);
-  trigger.addEventListener('click', show);
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') hide(); });
-  window.addEventListener('scroll', hide, { passive: true });
-  window.addEventListener('resize', hide, { passive: true });
-}

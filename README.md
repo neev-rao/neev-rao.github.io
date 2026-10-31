@@ -44,14 +44,14 @@ No domain purchase is required for the free GitHub Pages address. Once the site 
 - **`index.html`**: About, education, experience, projects, technology lists, contact information, and page metadata.
 - **`styles.css`**: Fonts, layouts, responsive styling, and dark/light color variables at the top of the file.
 - **`script.js`**: Theme preference, mobile navigation, scroll-driven rally rendering and current year.
-- **`interactions.mjs`**: Active-section selection, the split-flap scoreboard, and the finite Bevo hover/focus/touch celebration.
+- **`interactions.mjs`**: Active-section selection, the split-flap scoreboard.
 - **`pong.mjs`**: Pure rally math: perspective projection, table bounces, and paddle contacts.
 - **`resume.html`**: A public résumé, without the phone number, with a **Print / Save as PDF** button. Keep it in sync with the main page when updating your experience.
 - **`favicon.svg`**: Browser tab icon.
 
 The design uses a single text column, plain project links, and a decorative SVG ping-pong table behind the content. Scrolling moves the ball and paddles; scrolling back retraces the rally. There is no perpetual animation loop. The operating system's reduced-motion preference keeps the scene still. The scene cannot intercept pointer or keyboard input and is hidden from assistive technology. All portfolio content remains readable without JavaScript. Fonts use Google Fonts with local sans-serif fallbacks. Email contact uses a mail link and does not need a backend.
 
-The opening contains just the name and social links. The scoreboard contains only the current section name and flips between Neev Rao, About, Experience, Projects, Tools, and Contact based on the main section in view. The UT Austin text in About reveals a small upright Bevo drawing, based on the supplied pose sketch, on a compact white background with confetti for 3.8 seconds, and supports hover, keyboard focus, and touch. Escape or scrolling dismisses it. Reduced motion keeps the portrait and scoreboard still while preserving the section label. The header links to `Neev_Rao_Resume.pdf`.
+The opening contains just the name and social links. The scoreboard contains only the current section name and flips between Neev Rao, About, Experience, Projects, Tools, and Contact based on the main section in view. Reduced motion keeps the portrait and scoreboard still while preserving the section label. The header links to `Neev_Rao_Resume.pdf`.
 
 Run the animation checks with `node --test tests/*.test.mjs`. They verify paddle contact and continuity, bounces and net clearance, reverse scrolling, reduced motion and frame scheduling. Do not upload the tests or local preview files when publishing manually.
 

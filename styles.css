@@ -24,21 +24,11 @@
 .scoreboard-display{position:relative;height:47px;perspective:450px;border:1px solid var(--line);border-radius:2px;background:var(--bg);overflow:hidden}
 .scoreboard-label,.scoreboard-flap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:500 17px/1 Consolas,monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--ink);background:var(--bg);transform-origin:50% 50%;backface-visibility:hidden}
 .scoreboard-old{z-index:2}.scoreboard-new{z-index:3}.scoreboard-seam{position:absolute;top:50%;left:0;right:0;border-top:1px solid var(--line);opacity:.7;z-index:4}
-.ut-trigger{display:inline;background:none;border:0;border-bottom:1px dashed var(--quiet);padding:0;color:var(--ink);font:inherit;line-height:inherit;text-align:left;cursor:pointer;touch-action:manipulation}
-.ut-trigger:hover,.ut-trigger:focus-visible{color:#d6884c;border-color:#bf5700}
-.bevo-popup{position:fixed;width:144px;height:168px;z-index:30;pointer-events:none}
-.bevo-art{display:block;width:100%;height:100%;overflow:visible}.bevo-portrait{transform-origin:100px 192px}
-.bevo-confetti{position:absolute;inset:0;overflow:hidden;border-radius:6px}.bevo-confetti i{position:absolute;top:-12px;left:var(--x);width:5px;height:8px;background:var(--color);opacity:0}
-.is-celebrating .bevo-portrait{animation:bevo-sway .9s ease-in-out 4}
-.is-celebrating .bevo-confetti i{animation:bevo-confetti 1.5s var(--delay) ease-out 2}
-@keyframes bevo-sway{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg) translateX(-2px)}75%{transform:rotate(4deg) translateX(2px)}}
-@keyframes bevo-confetti{0%{opacity:0;transform:translate(0,-5px) rotate(0)}12%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translate(var(--drift),198px) rotate(var(--turn))}}
 @media(min-width:1600px){.scoreboard{left:calc(50% + 415px);top:calc(48% - 225px)}}
 @media(max-width:1050px){.scoreboard{left:calc(48% + 263px);top:calc(48% - 175px);width:224px}}
 @media(max-width:700px){.scoreboard{left:50%;top:calc(56% - 150px);width:210px}.scoreboard-display{height:38px}.scoreboard-label,.scoreboard-flap{font-size:14px}}
 @media(max-width:480px){.scoreboard{top:calc(56% - 140px);width:194px;padding:0}.scoreboard-display{height:34px}.scoreboard-label,.scoreboard-flap{font-size:13px}}
-@media(prefers-reduced-motion:reduce){.bevo-confetti{display:none}}
-@media print{.scoreboard,.bevo-popup{display:none}}
+@media print{.scoreboard{display:none}}
 
 
 @media(max-width:1050px) and (min-width:701px){.pong-table{left:auto;right:-20px;width:500px}.scoreboard{left:auto;right:45px;transform:none;opacity:.44}}

@@ -20,7 +20,7 @@ function boot(reduced) {
   const media = { matches: reduced, addEventListener(type, callback) { this.change = callback; } };
   const win = { scrollY: 720, callbacks: {}, addEventListener(type, callback) { this.callbacks[type] = callback; } };
   const doc = { documentElement: element('root'), querySelector: element, addEventListener() {} };
-  const context = vm.createContext({ document: doc, window: win, rallyAt, initSectionScoreboard() {}, initBevo() {}, matchMedia: () => media,
+  const context = vm.createContext({ document: doc, window: win, rallyAt, initSectionScoreboard() {}, matchMedia: () => media,
     localStorage: { getItem() { return null; } }, requestAnimationFrame(callback) { frames.push(callback); } });
   const source = readFileSync(new URL('../script.js', import.meta.url), 'utf8').replace(/^import[^\n]+\n/gm, '');
   vm.runInContext(source, context);

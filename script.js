@@ -1,5 +1,5 @@
 import { rallyAt } from './pong.mjs';
-import { initSectionScoreboard, initBevo } from './interactions.mjs';
+import { initSectionScoreboard } from './interactions.mjs';
 
 const root = document.documentElement;
 const themeButton = document.querySelector('.theme-toggle');
@@ -46,7 +46,6 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 initSectionScoreboard({ reducedMotion });
-initBevo({ reducedMotion });
 const ball = document.querySelector('#pong-ball');
 const shadow = document.querySelector('#ball-shadow');
 const left = document.querySelector('#paddle-left');
