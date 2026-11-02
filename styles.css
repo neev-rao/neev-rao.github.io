@@ -9,4 +9,3 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 @media print{.site-header,.footer-actions{display:none}body{background:white;color:black}.hero{padding-top:0}.section p{color:#222}.section{padding-top:25px}.container{width:100%}}
 
-.about-facts{margin-top:24px}
