@@ -44,3 +44,16 @@ document.addEventListener('click', event => {
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 initSectionNavigation();
+
+// Scroll to in-page sections without adding #section to the URL.
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
+  const target = document.getElementById(link.hash.slice(1));
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView();
+  if (!target.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT)$/.test(target.tagName)) target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+});
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
