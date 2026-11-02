@@ -4,7 +4,7 @@ A responsive, static portfolio for GitHub Pages. Plain HTML, CSS, and JavaScript
 
 ## Preview locally
 
-Start a local server from this folder (the rally uses a JavaScript module):
+Start a local server from this folder (the navigation uses a JavaScript module):
 
 ```powershell
 python -m http.server 4173 --directory . --bind 127.0.0.1
@@ -17,7 +17,7 @@ Visit http://127.0.0.1:4173. Stop the server with Ctrl+C.
 The GitHub username supplied in the résumé is `neev-rao`. For a user site, use a public repository named **`neev-rao.github.io`**. Its default website address will be **https://neev-rao.github.io/**.
 
 1. Sign in at https://github.com and create a new **public** repository named `neev-rao.github.io`. If it already exists, use that repository and check its contents before changing it.
-2. In the repository, select **Add file → Upload files**. Upload `index.html`, `styles.css`, `script.js`, `pong.mjs`, `interactions.mjs`, `resume.html`, `Neev_Rao_Resume.pdf`, and `favicon.svg` from this folder. Commit the files to the `main` branch. These files must sit at the repository root, not inside another folder.
+2. In the repository, select **Add file → Upload files**. Upload `index.html`, `styles.css`, `script.js`, `interactions.mjs`, `resume.html`, `Neev_Rao_Resume.pdf`, and `favicon.svg` from this folder. Commit the files to the `main` branch. These files must sit at the repository root, not inside another folder.
 3. Open **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
 5. Choose the **main** branch and **/(root)** folder, then click **Save**.
@@ -43,17 +43,14 @@ No domain purchase is required for the free GitHub Pages address. Once the site 
 
 - **`index.html`**: About, education, experience, projects, technology lists, contact information, and page metadata.
 - **`styles.css`**: Fonts, layouts, responsive styling, and dark/light color variables at the top of the file.
-- **`script.js`**: Theme preference, mobile navigation, scroll-driven rally rendering and current year.
-- **`interactions.mjs`**: Active-section selection, the split-flap scoreboard.
-- **`pong.mjs`**: Pure rally math: perspective projection, table bounces, and paddle contacts.
+- **`script.js`**: Theme preference, mobile navigation, section navigation and current year.
+- **`interactions.mjs`**: Active-section selection for navigation highlighting.
 - **`resume.html`**: A public résumé, without the phone number, with a **Print / Save as PDF** button. Keep it in sync with the main page when updating your experience.
 - **`favicon.svg`**: Browser tab icon.
 
-The design uses a single text column, plain project links, and a decorative SVG ping-pong table behind the content. Scrolling moves the ball and paddles; scrolling back retraces the rally. There is no perpetual animation loop. The operating system's reduced-motion preference keeps the scene still. The scene cannot intercept pointer or keyboard input and is hidden from assistive technology. All portfolio content remains readable without JavaScript. Fonts use Google Fonts with local sans-serif fallbacks. Email contact uses a mail link and does not need a backend.
+The design uses a compact text column, larger high-contrast text, and plain project links. There are no decorative background graphics. The header links to `Neev_Rao_Resume.pdf`. All content remains readable without JavaScript. Fonts use Google Fonts with local sans-serif fallbacks. Email uses a mail link and needs no backend.
 
-The opening contains just the name and social links. The scoreboard contains only the current section name and flips between Neev Rao, About, Experience, Projects, Tools, and Contact based on the main section in view. Reduced motion keeps the portrait and scoreboard still while preserving the section label. The header links to `Neev_Rao_Resume.pdf`.
-
-Run the animation checks with `node --test tests/*.test.mjs`. They verify paddle contact and continuity, bounces and net clearance, reverse scrolling, reduced motion and frame scheduling. Do not upload the tests or local preview files when publishing manually.
+Run the navigation checks with `node --test tests/*.test.mjs`.
 
 If the repository remains named `neevrao.github.io` under the `neev-rao` account, it is a project site at **https://neev-rao.github.io/neevrao.github.io/**. The relative links and module imports support that address as well as a user site or custom domain.
 
